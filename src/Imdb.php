@@ -1,10 +1,10 @@
 <?php
-namespace Jleagle\Imdb;
+namespace sjregan\Imdb;
 
 use GuzzleHttp\Client;
-use Jleagle\Imdb\Exceptions\ImdbException;
-use Jleagle\Imdb\Responses\Movie;
-use Jleagle\Imdb\Responses\Result;
+use sjregan\Imdb\Exceptions\ImdbException;
+use sjregan\Imdb\Responses\Movie;
+use sjregan\Imdb\Responses\Result;
 
 class Imdb
 {

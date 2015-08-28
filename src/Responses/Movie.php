@@ -1,5 +1,5 @@
 <?php
-namespace Jleagle\Imdb\Responses;
+namespace sjregan\Imdb\Responses;
 
 class Movie extends AbstractResponse
 {

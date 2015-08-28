@@ -1,5 +1,5 @@
 <?php
-namespace Jleagle\Imdb\Exceptions;
+namespace sjregan\Imdb\Exceptions;
 
 class ImdbException extends \Exception
 {
