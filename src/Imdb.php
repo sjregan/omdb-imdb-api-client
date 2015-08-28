@@ -91,17 +91,21 @@ class Imdb
     );
 
     $return = [];
-    foreach($data['Search'] as $result)
-    {
-      $return[] = new Result(
-        [
-          'title'     => $result['Title'],
-          'year'      => $result['Year'],
-          'imdbId'    => $result['imdbID'],
-          'movieType' => $result['Type']
-        ]
-      );
+    
+    if (isset($data['Search'])) {
+        foreach($data['Search'] as $result)
+        {
+          $return[] = new Result(
+            [
+              'title'     => $result['Title'],
+              'year'      => $result['Year'],
+              'imdbId'    => $result['imdbID'],
+              'movieType' => $result['Type']
+            ]
+          );
+        }
     }
+    
     return $return;
   }
 
@@ -130,15 +134,20 @@ class Imdb
     $params['v'] = '1';
 
     $client = new Client();
-    $response = $client
-      ->get('http://www.omdbapi.com/', ['query' => $params])
-      ->json();
-
-    if(isset($response['Response']) && $response['Response'] == 'False')
-    {
-      throw new ImdbException($response['Error']);
+    $response = $client->get('http://www.omdbapi.com/', ['query' => $params]);
+    $code = $response->getStatusCode();
+    $body = $response->getBody()->getContents();
+    
+    if ($code != 200) {
+        throw new ImdbException($body);
+    }
+    
+    try {
+        $decoded = json_decode($body, true);
+    } catch (Exception $ex) {
+        throw new ImdbException('Invalid json');
     }
 
-    return $response;
+    return $decoded;
   }
 }
