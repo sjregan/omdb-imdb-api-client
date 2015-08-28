@@ -1,5 +1,5 @@
 {
-  "name":        "jleagle/omdb-imdb-api-client",
+  "name":        "sjregan/omdb-imdb-api-client",
   "keywords":    [
     "imdb",
     "omdb",
@@ -18,14 +18,14 @@
   ],
   "require":     {
     "php":               ">=5.4",
-    "guzzlehttp/guzzle": "~5.0"
+    "guzzlehttp/guzzle": "~6.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.6"
   },
   "autoload":    {
     "psr-4": {
-      "Jleagle\\Imdb\\": "src/"
+      "sjregan\\Imdb\\": "src/"
     }
   }
 }
